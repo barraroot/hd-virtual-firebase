@@ -13,6 +13,7 @@
   "author": "Lucas Carvalho <lucas.carvalho@microcenterrc.com.br>",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^4.12.1",
     "font-awesome": "^4.7.0",
     "webpack": "^4.5.0"
   },

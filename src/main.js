@@ -1,9 +1,24 @@
+import templateComponent from './template';
+import fileListComponent from './files_list';
+import uploaderComponent from './uploader';
+
+const components = [
+    templateComponent,
+    fileListComponent,
+    uploaderComponent
+];
+
 class Init {
     constructor() {
-        let component = require('./template/');
-        let app = document.getElementById('app');
-        app.innerHTML = component.template;
-        component.action();
+        components.forEach((component) => {
+            if(component.el !== '') { 
+                let elementMain = document.querySelector(component.el);
+                if(elementMain !== null) {
+                    elementMain.innerHTML = component.template;
+                }                
+            }
+            component.afterBind();            
+        });
     }
 }
 

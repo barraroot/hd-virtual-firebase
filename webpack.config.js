@@ -29,7 +29,7 @@ module.exports = {
             },            
             {
                 test: /\.(s*)css$/,
-                loader: 'file-loader'             
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(ttf|eot|svg|woff2|woff)$/,

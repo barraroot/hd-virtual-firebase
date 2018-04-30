@@ -1,5 +1,6 @@
 import fileUpload from './upload_file';
 import folderUpload from './upload_folder';
+import photoUpload from './upload_photo';
 
 export default {
     el: '#footer',
@@ -25,7 +26,7 @@ export default {
                                 folderUpload();
                             break;
                             case 'photo':
-                            
+                                photoUpload();
                             break;
                             case 'audio':
                             

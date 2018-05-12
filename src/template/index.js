@@ -4,6 +4,9 @@ import header from "./header.html";
 import content from "./content.html";
 import footer from "./footer.html";
 import sidebar from "./sidebar.html";
+import sharer from './sharer';
+import './shared';
+require('./usage');
 
 export default {
     el: '#app',
@@ -34,5 +37,10 @@ export default {
         };
 
         openMenu.addEventListener('click', openMenuEvent, true);
+
+        document.getElementById('addSharer').addEventListener('submit', function (e) {
+            e.preventDefault();
+            sharer(document.getElementById('addSharerInput').value);
+        })
     }
 }

@@ -1,6 +1,8 @@
 import fileUpload from './upload_file';
 import folderUpload from './upload_folder';
 import photoUpload from './upload_photo';
+import audioUpload from './upload_audio';
+import noteUpload from './upload_note';
 
 export default {
     el: '#footer',
@@ -29,10 +31,10 @@ export default {
                                 photoUpload();
                             break;
                             case 'audio':
-                            
+                                audioUpload();
                             break;
                             case 'note':
-                            
+                                noteUpload();
                             break;                            
                     }
                 }

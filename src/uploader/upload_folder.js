@@ -1,8 +1,11 @@
 import getPath from '../utils/get_path';
 import { app } from '../firebase';
+import { UserClass } from '../auth/user';
 
 export default function () {
     let path = getPath();
+
+    const userInstance = new UserClass;
 
     let dirctoryName = prompt('Qual o nome do diretório a ser criado ?', 'Minha pasta');
 
@@ -10,7 +13,7 @@ export default function () {
     if(dirctoryName == null || dirctoryName == '') {
         return;
     }
-    let folderRef = app.database().ref('files/1' + path);
+    let folderRef = app.database().ref('files/'+ userInstance.user.uid + path);
     folderRef.push({
         type: 'folder-open',
         title: dirctoryName,

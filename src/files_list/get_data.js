@@ -1,23 +1,30 @@
 export default function (snapshot) {
     let data = snapshot.val();
-    data = Object.entries(data);
+    if(!data) {
+        document.querySelector('#main .files').innerHTML = "Nenhuma pasta ou arquivo para este usuário.";
+        return;
+    }
 
+    data = Object.entries(data);
     let partial = require('./partial.html');
 
-    data.sort((a,b) => {
-        if(typeof a[1] != 'object') {
-            return true;
+    let folders = [];
+    let files = [];
+    data.forEach((item, key) => {
+        if(typeof item[1] != 'object') {
+            data.splice(key);
         }
-        return a[1].title.localeCompare(b[1].title)
-    });
-    
-    data.sort((a,b) => {
-        if(typeof a[1] != 'object') {
-            return true;
+
+        if(item[1].type == 'folder-open') {
+            folders.push(item);
+        } else {
+            files.push(item);
         }
-        return a[1].type < b[1].type
     });
 
+    folders.sort((a,b) => a[1].title.localeCompare(b[1].title));
+    files.sort((a,b) => a[1].title.localeCompare(b[1].title));
+    data = folders.concat(files);
     let html = '';
     for (let index in data) {
 
